@@ -1,0 +1,1 @@
+python ~/lib/python/count_reference_kmers.py --regions pfmdr_region.bed --genome /proj/julianog/refs/Pf3D7_v9.3/PlasmoDB-9.3_Pfalciparum3D7_Genome.fasta --kmer 30 --step 5 --msbwt Pf_Hi_Pool_msbwt/ --verbose --revcomp  > Pf_HI_pfmdr.out.gene
