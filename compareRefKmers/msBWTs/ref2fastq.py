@@ -34,8 +34,8 @@ fa_in=open(name,"r") # Need to re-open the file to iterate from the top
 ## Print the line if it's the right length
 ## Add N's if the line is too short
 for line in iter(fa_in):
-#	line = line.upper() # convert to upper case
-	if re.search('>|M|R|W|S|Y|K|V|H|D|B|X|N', line):
+	line = line.upper() # convert to upper case
+	if re.search('>|M|R|W|S|Y|K|V|H|D|B|X|N', line): # remove all non-ATGC bases
 		continue
 	else:
 		if strLen == len(line):
