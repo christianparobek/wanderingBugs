@@ -35,11 +35,13 @@ fa_in=open(name,"r") # Need to re-open the file to iterate from the top
 ## Add N's if the line is too short
 for line in iter(fa_in):
 	line = line.upper() # convert to upper case
-	if re.search('>|M|R|W|S|Y|K|V|H|D|B|X|N', line): # remove all non-ATGC bases
+	if re.match('>', line):
+		lineName = line.rstrip()
+	elif re.search('M|R|W|S|Y|K|V|H|D|B|X|N', line): # remove all non-ATGC bases
 		continue
 	else:
 		if strLen == len(line):
-			fa_out.write('@anotherLineFrom ' + name)
+			fa_out.write('@lineFrom ' + lineName)
 			fa_out.write("\n")
 			fa_out.write(line.rstrip())
 			fa_out.write("\n")
@@ -49,7 +51,7 @@ for line in iter(fa_in):
 			fa_out.write("\n")
 		else:
 			diff = strLen - len(line) # determine number of N's I'll have to add
-			fa_out.write('@anotherLineFrom ' + name)
+			fa_out.write('@lineFrom ' + lineName)
 			fa_out.write("\n")
 			fa_out.write(line.rstrip() + "N" * diff)
 			fa_out.write("\n")
